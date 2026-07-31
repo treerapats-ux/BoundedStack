@@ -129,11 +129,7 @@ public class BoundedStack {
 
         checkRep();
 
-        if (pokemon.isEmpty()) {
-            throw new IllegalStateException(
-                "Stack is Empty"
-            );
-        }
+       
 
         return pokemon.get(
             pokemon.size() - 1
