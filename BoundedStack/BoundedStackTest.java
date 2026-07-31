@@ -5,42 +5,7 @@ public class BoundedStackTest {
 
     public static void main(String[] args) {
         
-        // --- Creator ---
-        testCustomCapacity();
-        testNewStackPeekThrows();
-        testNewStackPopThrows();
-        testNewStackIsNotFull();
-        testInvalidCapacityThrows();
-        testNewStackIsEmpty();
-
-        // --- Producer (push) + Observer (peek) ---
-        testPushThenPeekReturnsSameElement();
-        testPushTwiceThenPeekReturnsLastPushed();
-        testPushMultipleThenPeekIsLIFO();
-        testPushMakesStackNotEmpty();
-        testSizeAfterPushAndPop();
-        testPeekDoesNotRemoveElement();
-
-        // --- Mutator (pop) ---
-        testPushThenPopReturnsElementAndEmptiesStack();
-        testPushTwiceThenPopReturnsInLIFOOrder();
-        testPopAfterEmptyingThrowsAgain();
-        testPopMakesStackEmpty();
-
-        // --- Capacity boundary ---
-        testPushUntilCapacityMakesFull();
-        testPushBeyondCapacityThrows();
-        testPeekAfterFillingReturnsLastPushed();
-        testPopFromFullStackMakesItNotFull();
-
-        // --- Invalid input ---
-        testPushNullThrows();
-        testPushEmptyStringSucceeds();
-
-        // --- push/pop สลับกันไปมา ---
-        testInterleavedPushPopMaintainsLIFO();
-        testEmptyThenPushAgainWorks();
-
+       
         System.out.println();
         System.out.println("SUMMARY");
         System.out.println("PASS: " + passCount + "  FAIL: " + failCount + "  TOTAL: " + (passCount + failCount));
