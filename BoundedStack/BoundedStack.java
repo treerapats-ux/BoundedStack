@@ -39,7 +39,7 @@ public class BoundedStack {
         this.capacity = capacity;
         this.pokemon = new ArrayList<>();
 
-       
+        checkRep();
     }
 
     /**
@@ -72,7 +72,16 @@ public class BoundedStack {
     /**
      * ตรวจสอบ Representation Invariant
      */
-    
+    private void checkRep() {
+        assert pokemon != null :
+            "Pokemon list must not be null";
+
+        assert pokemon.size() <= capacity :
+            "Stack size exceeds capacity";
+
+        assert !pokemon.contains(null) :
+            "Stack contains null Pokemon";
+    }
 
     /**
      * เพิ่มชื่อ Pokémon เข้า Stack
@@ -83,10 +92,21 @@ public class BoundedStack {
      */
     public void push(String name_pokemon) {
 
-        
-       
+        if (name_pokemon == null) {
+            throw new IllegalArgumentException(
+                "Pokemon cannot be null"
+            );
+        }
 
-       
+        if (isFull()) {
+            throw new IllegalStateException(
+                "Stack is Full"
+            );
+        }
+
+        pokemon.add(name_pokemon);
+
+        checkRep();
     }
 
     /**
@@ -107,7 +127,7 @@ public class BoundedStack {
             pokemon.size() - 1
         );
 
-        
+        checkRep();
 
         return result;
     }
@@ -121,9 +141,13 @@ public class BoundedStack {
      */
     public String peek() {
 
-        
+        checkRep();
 
-        
+        if (pokemon.isEmpty()) {
+            throw new IllegalStateException(
+                "Stack is Empty"
+            );
+        }
 
         return pokemon.get(
             pokemon.size() - 1
