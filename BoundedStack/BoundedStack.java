@@ -1,7 +1,25 @@
 import java.util.*;
- 
+
+/**
+ * BoundedStack
+ */
 public class BoundedStack {
 
+    //
+    // AF:
+    //   pokemon แทน Stack ที่เก็บข้อมูลชนิด String
+    //   โดยสมาชิกตัวสุดท้ายของ pokemon คือ Top ของ Stack
+    //
+    // RI:
+    //   pokemon != null
+    //   pokemon.size() <= capacity
+    //   pokemon ต้องไม่มีสมาชิกที่เป็น null
+    //
+
+    // Safety from rep exposure:
+    //   - pokemon เป็น private final จึงไม่สามารถเข้าถึงจากภายนอกได้
+    //   - ไม่มีเมธอดที่คืน reference ของ pokemon ให้ผู้ใช้
+    //   - การแก้ไขข้อมูลทำได้ผ่าน push() และ pop() เท่านั้น
 
     private final List<String> pokemon;
     private final int capacity;
@@ -74,7 +92,17 @@ public class BoundedStack {
      */
     public void push(String name_pokemon) {
 
-        
+        if (name_pokemon == null) {
+            throw new IllegalArgumentException(
+                "Pokemon cannot be null"
+            );
+        }
+
+        if (isFull()) {
+            throw new IllegalStateException(
+                "Stack is Full"
+            );
+        }
 
         pokemon.add(name_pokemon);
 
@@ -89,7 +117,11 @@ public class BoundedStack {
      */
     public String pop() {
 
-       
+        if (pokemon.isEmpty()) {
+            throw new IllegalStateException(
+                "Stack is Empty"
+            );
+        }
 
         String result = pokemon.remove(
             pokemon.size() - 1
@@ -111,7 +143,11 @@ public class BoundedStack {
 
         checkRep();
 
-       
+        if (pokemon.isEmpty()) {
+            throw new IllegalStateException(
+                "Stack is Empty"
+            );
+        }
 
         return pokemon.get(
             pokemon.size() - 1
