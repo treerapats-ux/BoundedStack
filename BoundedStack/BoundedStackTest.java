@@ -505,7 +505,7 @@ public class BoundedStackTest {
         } else {
             failCount++;
             System.out.println(
-                "[FAIL] " + testName + "  (" + detail + ")
+                "[FAIL] " + testName + "  (" + detail + ")"
             );
         }
     }
