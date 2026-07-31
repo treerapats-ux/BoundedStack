@@ -107,11 +107,7 @@ public class BoundedStack {
      */
     public String pop() {
 
-        if (pokemon.isEmpty()) {
-            throw new IllegalStateException(
-                "Stack is Empty"
-            );
-        }
+       
 
         String result = pokemon.remove(
             pokemon.size() - 1
