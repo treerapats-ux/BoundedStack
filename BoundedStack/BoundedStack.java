@@ -30,7 +30,11 @@ public class BoundedStack {
      */
     public BoundedStack(int capacity) {
 
-       
+        if (capacity <= 0) {
+            throw new IllegalArgumentException(
+                "Capacity must be greater than 0"
+            );
+        }
 
         this.capacity = capacity;
         this.pokemon = new ArrayList<>();
@@ -88,11 +92,7 @@ public class BoundedStack {
      */
     public void push(String name_pokemon) {
 
-        if (name_pokemon == null) {
-            throw new IllegalArgumentException(
-                "Pokemon cannot be null"
-            );
-        }
+        
 
         if (isFull()) {
             throw new IllegalStateException(
