@@ -92,13 +92,13 @@ public class BoundedStack {
      */
     public void push(String name_pokemon) {
 
-        
-
-        if (isFull()) {
-            throw new IllegalStateException(
-                "Stack is Full"
+        if (name_pokemon == null) {
+            throw new IllegalArgumentException(
+                "Pokemon cannot be null"
             );
         }
+
+        
 
         pokemon.add(name_pokemon);
 
